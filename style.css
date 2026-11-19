@@ -7,21 +7,24 @@
 /* ===== 1. Kleuren en maten op één plek ===== */
 /* Verander hier een kleur, en hij verandert overal op de site. */
 :root {
-  --paper:  #F2F4F5;  /* achtergrond: koel labwit */
-  --ink:    #1A1E27;  /* tekst */
-  --muted:  #5D6472;  /* minder belangrijke tekst */
-  --line:   #D3D8DE;  /* lijntjes */
-  --uv:     #4B2BD6;  /* accent: het violet van UV-licht, een knipoog naar lithografie */
-  --uv-soft:#E6E1FB;  /* lichte versie van het accent */
+  --paper:  #121826;  /* achtergrond: donker, zelfde als de market briefing */
+  --surface:#1B2333;  /* kaarten en vlakken, iets lichter dan de achtergrond */
+  --ink:    #E6EAF2;  /* tekst */
+  --muted:  #8B95A7;  /* minder belangrijke tekst */
+  --line:   #2A3446;  /* lijntjes en randen */
+  --accent: #5AA9FF;  /* accent: hetzelfde blauw als de koerslijn in de briefing */
+  --accent-soft:#1E3550;  /* donkere versie van het accent, voor de tijdlijn */
+  --accent-hover:#8CC4FF; /* lichter blauw bij hover */
 
-  --measure: 64ch;    /* maximale regellengte, voor leesbaarheid */
+  --measure: 70ch;    /* maximale regellengte, voor leesbaarheid */
   --gap: clamp(1.25rem, 4vw, 3rem);
+  --radius: 8px;
 }
 
 /* ===== 2. Basis ===== */
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
 
 body {
   margin: 0;
@@ -32,12 +35,12 @@ body {
   line-height: 1.6;
 }
 
-a { color: var(--uv); text-underline-offset: 0.2em; }
+a { color: var(--accent); text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }
 
 /* Zichtbare rand als je met het toetsenbord navigeert (toegankelijkheid) */
 a:focus-visible {
-  outline: 2px solid var(--uv);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -45,13 +48,19 @@ a:focus-visible {
 h1, h2, h3 { line-height: 1.1; margin: 0; }
 
 /* ===== 3. Navigatie ===== */
+/* Blijft bovenaan staan als je scrolt */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
-  padding: 1.25rem var(--gap);
+  padding: 1rem var(--gap);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
 }
 
 .logo {
@@ -68,7 +77,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
 /* ===== 4. Hero met interferentiepatroon ===== */
 .hero {
   position: relative;
-  min-height: min(82vh, 760px);
+  min-height: min(60vh, 560px);
   display: flex;
   align-items: center;
   padding: var(--gap);
@@ -85,9 +94,9 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   position: absolute;
   inset: 0 0 0 38%;
   background:
-    repeating-radial-gradient(circle at 42% 50%, var(--uv) 0 1.5px, transparent 1.5px 13px),
-    repeating-radial-gradient(circle at 58% 50%, var(--uv) 0 1.5px, transparent 1.5px 13px);
-  opacity: 0.55;
+    repeating-radial-gradient(circle at 42% 50%, var(--accent) 0 1.5px, transparent 1.5px 13px),
+    repeating-radial-gradient(circle at 58% 50%, var(--accent) 0 1.5px, transparent 1.5px 13px);
+  opacity: 0.35;
   /* laat het patroon aan de randen zacht vervagen */
   -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
           mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
@@ -99,7 +108,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   from { opacity: 0; transform: scale(1.08); }
 }
 
-.hero-text { position: relative; max-width: 40rem; }
+.hero-text { position: relative; max-width: 44rem; }
 
 .hero h1 {
   font-size: clamp(3rem, 9vw, 7rem);
@@ -112,19 +121,44 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   font-size: clamp(1.2rem, 2.2vw, 1.5rem);
   line-height: 1.45;
   max-width: 30ch;
-  margin: 1.25rem 0 2rem;
+  margin: 1.25rem 0 1.5rem;
 }
+
+/* Drie korte feiten onder de intro, in dezelfde tegels als de market briefing */
+.facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+}
+.facts li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.facts span { display: block; color: var(--muted); font-weight: 400; font-size: 0.85rem; }
 
 .button {
   display: inline-block;
-  background: var(--uv);
-  color: #fff;
+  background: var(--accent);
+  color: var(--paper);
   text-decoration: none;
   font-weight: 600;
   padding: 0.8rem 1.4rem;
   border-radius: 999px;
+  border: 2px solid var(--accent);
 }
-.button:hover { background: var(--ink); }
+.button:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+/* Rustige variant: alleen een rand, voor de tweede knop */
+.button-ghost { background: transparent; color: var(--accent); }
+.button-ghost:hover { background: var(--accent-soft); color: var(--accent-hover); }
 
 /* ===== 5. Secties ===== */
 /* Op een groot scherm: kop links in een smalle kolom, tekst rechts */
@@ -132,7 +166,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   display: grid;
   grid-template-columns: minmax(10rem, 1fr) 3fr;
   gap: 1rem var(--gap);
-  padding: clamp(3rem, 7vw, 5.5rem) var(--gap);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--gap);
   border-bottom: 1px solid var(--line);
 }
 
@@ -144,7 +178,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   padding-top: 0.3rem;
 }
 
-.block-body { max-width: var(--measure); }
+.block-body { max-width: var(--measure); min-width: 0; }
 .block-body p { margin: 0 0 1rem; }
 .block-body h3 {
   font-size: 1.3rem;
@@ -154,44 +188,88 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
 }
 .block-body h3:first-child { margin-top: 0; }
 
-/* Vaardigheden */
-.skills { margin: 0; }
-.skills div {
+/* Vaardigheden: drie kaarten naast elkaar */
+.skills {
+  margin: 0;
   display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+  gap: 0.75rem;
 }
-.skills div:first-child { border-top: 0; padding-top: 0; }
-.skills dt { font-weight: 700; font-stretch: 112%; }
-.skills dd { margin: 0; }
+.skills div {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.skills dt { font-weight: 700; font-stretch: 112%; margin-bottom: 0.4rem; }
+.skills dd { margin: 0; color: var(--muted); font-size: 0.97rem; }
 
-/* Ervaring: een tijdlijn met een violet lijntje links */
-.timeline { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--uv-soft); }
-.timeline li { position: relative; padding-bottom: 2rem; }
-.timeline li:last-child { padding-bottom: 0; }
+/* Gereedschap als kleine labels onder de vaardigheden */
+.chips { list-style: none; padding: 0; margin: 1.25rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chips li {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Ervaring en opleiding: een tijdlijn met een blauw lijntje links, elk item een kaart */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--accent-soft); }
+.timeline li {
+  position: relative;
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+.timeline li:last-child { margin-bottom: 0; }
 .timeline li::before {           /* het bolletje op de lijn */
   content: "";
   position: absolute;
   left: calc(-1.5rem - 6px);
-  top: 0.45rem;
+  top: 1.4rem;
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--uv);
+  background: var(--accent);
 }
 .timeline h3 { margin: 0; }
 .timeline .meta { color: var(--muted); font-size: 0.95rem; margin: 0.2rem 0 0.5rem; }
+.timeline li p:last-child { margin-bottom: 0; }
 
 .empty { color: var(--muted); }
 
+/* Projecten: een kaart per project, twee naast elkaar; de links staan onder de tekst */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+.project {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+.project img { display: block; width: 100%; height: auto; margin-bottom: 1rem; }
+.project h3 { margin: 0 0 0.5rem; }
+.project p { margin: 0 0 1rem; }
+.project .project-links {
+  margin: auto 0 0;          /* duwt de knoppen naar de onderkant van de kaart */
+  padding-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 /* ===== 6. Wat ik zoek + contact ===== */
 .looking {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  color: var(--ink);
   padding: clamp(4rem, 9vw, 7rem) var(--gap);
 }
-.looking h2 { font-size: 1.05rem; font-weight: 700; font-stretch: 112%; color: #A9A0EE; }
+.looking h2 { font-size: 1.05rem; font-weight: 700; font-stretch: 112%; color: var(--muted); }
 .looking-text {
   font-size: clamp(1.8rem, 4.5vw, 3.2rem);
   font-weight: 700;
@@ -201,16 +279,16 @@ h1, h2, h3 { line-height: 1.1; margin: 0; }
   margin: 1rem 0 2.5rem;
 }
 .contact { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
-.looking a { color: #C9C1FF; }
+.looking a { color: var(--accent); }
 
 .site-footer { padding: 1.5rem var(--gap); color: var(--muted); font-size: 0.9rem; }
 .site-footer p { margin: 0; }
 
 /* ===== 7. Kleine schermen (telefoon) ===== */
 @media (max-width: 720px) {
-  .block { grid-template-columns: 1fr; }
-  .fringes { inset: 0; opacity: 0.25; }
-  .skills div { grid-template-columns: 1fr; gap: 0.25rem; }
+  /* minmax(0, 1fr): de kolom mag smaller worden dan de inhoud, anders loopt de pagina opzij uit */
+  .block { grid-template-columns: minmax(0, 1fr); }
+  .fringes { inset: 0; opacity: 0.2; }
 }
 
 /* Voor mensen die minder beweging willen (instelling in hun systeem) */

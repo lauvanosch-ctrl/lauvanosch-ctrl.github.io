@@ -48,6 +48,12 @@
           Applied physicist from TU Eindhoven. I find the connections in data
           and make them clear for others.
         </p>
+        <!-- Drie korte feiten, zodat de bovenkant meteen iets laat zien -->
+        <ul class="facts">
+          <li>MSc Applied Physics <span>TU Eindhoven, 2026</span></li>
+          <li>2 industry internships <span>ASML, SMART Photonics</span></li>
+          <li>Python, data, AI agents <span>simulation and analysis</span></li>
+        </ul>
         <a class="button" href="#contact">Get in touch</a>
       </div>
     </section>
@@ -91,6 +97,16 @@
             </dd>
           </div>
         </dl>
+        <!-- Gereedschap dat ik gebruik, als kleine labels -->
+        <ul class="chips" aria-label="Tools">
+          <li>Python</li>
+          <li>pandas</li>
+          <li>matplotlib</li>
+          <li>MATLAB</li>
+          <li>SQL</li>
+          <li>Git</li>
+          <li>Claude API</li>
+        </ul>
       </div>
     </section>
 
@@ -168,21 +184,31 @@
     <!-- ===== Projecten (vul je in fase 2 en 3) ===== -->
     <section class="block" id="projects">
       <h2>Projects</h2>
-      <div class="block-body">
-        <h3>Market briefing agent</h3>
-        <p>
-          A daily market briefing in Python. It fetches prices for my watchlist,
-          flags unusual moves with a z-score, and asks a Claude agent with web
-          search to explain why those funds moved, with sources.
-          <a href="https://lauvanosch-ctrl.github.io/Market_briefing/briefing.html">Live briefing</a> ·
-          <a href="https://github.com/lauvanosch-ctrl/Market_briefing">Code on GitHub</a>
-        </p>
-        <h3>This website</h3>
-        <p>
-          Built with an AI coding agent as my first step into agentic AI:
-          plain HTML and CSS, hosted on GitHub Pages.
-          <a href="https://github.com/lauvanosch-ctrl/lauvanosch-ctrl.github.io">Code on GitHub</a>
-        </p>
+      <!-- Een kaart per project; de links staan in .project-links, onder de tekst -->
+      <div class="block-body projects">
+        <article class="project">
+          <img src="images/market_briefing_chart.svg" alt="Price chart of NVIDIA with 50- and 200-day averages, made by the market briefing">
+          <h3>Market briefing agent</h3>
+          <p>
+            A daily market briefing in Python. It fetches prices for my watchlist,
+            flags unusual moves with a z-score, and asks a Claude agent with web
+            search to explain why those funds moved, with sources.
+          </p>
+          <p class="project-links">
+            <a class="button" href="https://lauvanosch-ctrl.github.io/Market_briefing/briefing.html">Live briefing</a>
+            <a class="button button-ghost" href="https://github.com/lauvanosch-ctrl/Market_briefing">Code on GitHub</a>
+          </p>
+        </article>
+        <article class="project">
+          <h3>This website</h3>
+          <p>
+            Built with an AI coding agent as my first step into agentic AI:
+            plain HTML and CSS, hosted on GitHub Pages.
+          </p>
+          <p class="project-links">
+            <a class="button button-ghost" href="https://github.com/lauvanosch-ctrl/lauvanosch-ctrl.github.io">Code on GitHub</a>
+          </p>
+        </article>
       </div>
     </section>
     <!-- ===== Wat ik zoek + contact ===== -->
