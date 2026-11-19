@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+  Dit is de HTML: de INHOUD en STRUCTUUR van je site.
+  De opmaak (kleuren, lettertypes, ruimte) staat apart in style.css.
+
+  Zoek naar [ ... ] met blokhaken: daar moet jij nog iets invullen.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laurens van Osch, Applied Physicist</title>
+  <meta name="description" content="Applied Physics graduate from TU Eindhoven. Simulation, data analysis and Python.">
+
+  <!-- Het lettertype Archivo, van Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+
+  <!-- Hier koppel je het opmaakbestand -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Navigatie bovenaan ===== -->
+  <header class="site-header">
+    <a class="logo" href="#top">Laurens van Osch</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero: het eerste dat bezoekers zien ===== -->
+    <section class="hero">
+      <!-- Het interferentiepatroon: puur CSS, zie .fringes in style.css -->
+      <div class="fringes" aria-hidden="true"></div>
+
+      <div class="hero-text">
+        <h1>Laurens van Osch</h1>
+        <p class="hero-lead">
+          Applied physicist from TU Eindhoven. I find the connections in data
+          and make them clear for others.
+        </p>
+        <a class="button" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== Over mij ===== -->
+    <section class="block" id="about">
+      <h2>About me</h2>
+      <div class="block-body">
+        <p>
+          I'm a recent Applied Physics graduate from TU Eindhoven, and I enjoy
+          complex, modern problems. I got to know the high-tech industry through
+          internships at ASML and SMART Photonics. What I loved most there wasn't
+          only the physics, but solving problems with simulation and data
+          analysis through collaboration.
+        </p>
+        <p>
+          During those projects I noticed something: the minutes I spent coding
+          turned into hours without me feeling it.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Wat ik kan ===== -->
+    <section class="block" id="skills">
+      <h2>What I can do</h2>
+      <div class="block-body">
+        <dl class="skills">
+          <div>
+            <dt>Physics</dt>
+            <dd>Photonics and applied physics, simulation of physical systems.</dd>
+          </div>
+          <div>
+            <dt>Programming</dt>
+            <dd>Python and MATLAB. Basic SQL.</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>
+              What I do best: digging through data to find connections, and
+              making data understandable for others.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== Ervaring ===== -->
+    <section class="block" id="experience">
+      <h2>Experience</h2>
+      <div class="block-body">
+        <ul class="timeline">
+          <li>
+            <h3>ASML</h3>
+            <p class="meta">Graduation internship, 2025–2026</p>
+            <p>Proof of concept of a large-area hybrid system containing of a refractive lens in combination
+              of a metalens to reduce the aberations of a simple refractive lens.
+            </p>
+          </li>
+          <li>
+            <h3>SMART Photonics</h3>
+            <p class="meta">Internship, 2025</p>
+            <p>
+              Modeled the coupling sensitivity of waveguides to determine the
+              influence of position uncertainties on coupling performance.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Opleiding ===== -->
+    <!-- Dezelfde "timeline"-opmaak als bij Ervaring: één class, twee keer gebruikt -->
+    <section class="block" id="education">
+      <h2>Education</h2>
+      <div class="block-body">
+        <ul class="timeline">
+          <li>
+            <h3>MSc Applied Physics</h3>
+            <p class="meta">TU Eindhoven, 2024–2026</p>
+            <p>
+              Track: Nano, Quantum and Photonics. Graduation project in the
+              Photonics and Semiconductor Nanophysics (PSN) group.
+              GPA 7.6 / 10.
+            </p>
+          </li>
+          <li>
+            <h3>BSc Applied Physics</h3>
+            <p class="meta">TU Eindhoven, 2019–2024</p>
+            <p>GPA 7.2 / 10.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Buiten werk ===== -->
+    <section class="block" id="outside">
+      <h2>Outside work</h2>
+      <div class="block-body">
+        <h3>Competitive rowing</h3>
+        <p>
+          For years, competitive rowing took up almost all of my free time. It
+          taught me to perform under pressure and to deal with setbacks.
+          Eventually I became the most experienced rower in the group, and I
+          made it my role to help teammates: sharing what I had learned, so they
+          could use it sooner and avoid the setbacks I ran into.
+        </p>
+        <h3>Financial markets</h3>
+        <p>
+          I follow the financial markets, mostly through podcasts like
+          FD Dagkoers and the IEX Podcast. The rest of my free time goes to
+          friends.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Projecten (vul je in fase 2 en 3) ===== -->
+    <section class="block" id="projects">
+      <h2>Projects</h2>
+      <div class="block-body">
+        <p class="empty">
+          I'm building projects that combine data, automation and AI.
+          The first one is this website. New projects will appear here soon.
+          
+        </p>
+      </div>
+      <h2>First Project</h2>
+      <div class="block-body">
+        <p class="empty"> Project page: <a href="[pageadress].html">[Title project]</a>
+            [description of the project]
+          </p>
+        </div>
+    </section>
+
+    <!-- ===== Wat ik zoek + contact ===== -->
+    <section class="looking" id="contact">
+      <h2>What I'm looking for</h2>
+      <p class="looking-text">
+        A role that challenges my analytical and quantitative skills.
+      </p>
+      <ul class="contact">
+        <li>Email: <a href="mailto:lau.vanosch@gmail.com">lau.vanosch@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/laurensvanosch/">laurensvanosch</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Laurens van Osch, with help from an AI agent.</p>
+  </footer>
+
+</body>
+</html>

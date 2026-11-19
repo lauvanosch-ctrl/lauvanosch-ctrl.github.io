@@ -1,0 +1,220 @@
+/*
+  Dit is de CSS: de OPMAAK van je site.
+  Een regel ziet er zo uit:   selector { eigenschap: waarde; }
+  De selector kiest WELKE elementen, de rest zegt HOE ze eruitzien.
+*/
+
+/* ===== 1. Kleuren en maten op één plek ===== */
+/* Verander hier een kleur, en hij verandert overal op de site. */
+:root {
+  --paper:  #F2F4F5;  /* achtergrond: koel labwit */
+  --ink:    #1A1E27;  /* tekst */
+  --muted:  #5D6472;  /* minder belangrijke tekst */
+  --line:   #D3D8DE;  /* lijntjes */
+  --uv:     #4B2BD6;  /* accent: het violet van UV-licht, een knipoog naar lithografie */
+  --uv-soft:#E6E1FB;  /* lichte versie van het accent */
+
+  --measure: 64ch;    /* maximale regellengte, voor leesbaarheid */
+  --gap: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ===== 2. Basis ===== */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a { color: var(--uv); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* Zichtbare rand als je met het toetsenbord navigeert (toegankelijkheid) */
+a:focus-visible {
+  outline: 2px solid var(--uv);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 { line-height: 1.1; margin: 0; }
+
+/* ===== 3. Navigatie ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1.25rem var(--gap);
+}
+
+.logo {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-stretch: 112%;
+}
+
+.site-header nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.site-header nav a:hover { color: var(--ink); }
+
+/* ===== 4. Hero met interferentiepatroon ===== */
+.hero {
+  position: relative;
+  min-height: min(82vh, 760px);
+  display: flex;
+  align-items: center;
+  padding: var(--gap);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+/*
+  Het patroon: twee sets cirkels (twee "lichtbronnen") die over elkaar
+  liggen. Waar ze elkaar kruisen ontstaan banden, net als bij interferentie
+  van licht in een twee-spleten-experiment.
+*/
+.fringes {
+  position: absolute;
+  inset: 0 0 0 38%;
+  background:
+    repeating-radial-gradient(circle at 42% 50%, var(--uv) 0 1.5px, transparent 1.5px 13px),
+    repeating-radial-gradient(circle at 58% 50%, var(--uv) 0 1.5px, transparent 1.5px 13px);
+  opacity: 0.55;
+  /* laat het patroon aan de randen zacht vervagen */
+  -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
+  animation: fringes-in 1.6s ease-out both;
+}
+
+/* Het enige bewegende moment: het patroon verschijnt bij het laden */
+@keyframes fringes-in {
+  from { opacity: 0; transform: scale(1.08); }
+}
+
+.hero-text { position: relative; max-width: 40rem; }
+
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 800;
+  font-stretch: 125%;     /* breed lettertype: dit maakt de kop karakteristiek */
+  letter-spacing: -0.02em;
+}
+
+.hero-lead {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  line-height: 1.45;
+  max-width: 30ch;
+  margin: 1.25rem 0 2rem;
+}
+
+.button {
+  display: inline-block;
+  background: var(--uv);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+}
+.button:hover { background: var(--ink); }
+
+/* ===== 5. Secties ===== */
+/* Op een groot scherm: kop links in een smalle kolom, tekst rechts */
+.block {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) 3fr;
+  gap: 1rem var(--gap);
+  padding: clamp(3rem, 7vw, 5.5rem) var(--gap);
+  border-bottom: 1px solid var(--line);
+}
+
+.block h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  color: var(--muted);
+  padding-top: 0.3rem;
+}
+
+.block-body { max-width: var(--measure); }
+.block-body p { margin: 0 0 1rem; }
+.block-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  margin: 2rem 0 0.5rem;
+}
+.block-body h3:first-child { margin-top: 0; }
+
+/* Vaardigheden */
+.skills { margin: 0; }
+.skills div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+.skills div:first-child { border-top: 0; padding-top: 0; }
+.skills dt { font-weight: 700; font-stretch: 112%; }
+.skills dd { margin: 0; }
+
+/* Ervaring: een tijdlijn met een violet lijntje links */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--uv-soft); }
+.timeline li { position: relative; padding-bottom: 2rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {           /* het bolletje op de lijn */
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 6px);
+  top: 0.45rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--uv);
+}
+.timeline h3 { margin: 0; }
+.timeline .meta { color: var(--muted); font-size: 0.95rem; margin: 0.2rem 0 0.5rem; }
+
+.empty { color: var(--muted); }
+
+/* ===== 6. Wat ik zoek + contact ===== */
+.looking {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(4rem, 9vw, 7rem) var(--gap);
+}
+.looking h2 { font-size: 1.05rem; font-weight: 700; font-stretch: 112%; color: #A9A0EE; }
+.looking-text {
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  font-stretch: 118%;
+  line-height: 1.15;
+  max-width: 22ch;
+  margin: 1rem 0 2.5rem;
+}
+.contact { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+.looking a { color: #C9C1FF; }
+
+.site-footer { padding: 1.5rem var(--gap); color: var(--muted); font-size: 0.9rem; }
+.site-footer p { margin: 0; }
+
+/* ===== 7. Kleine schermen (telefoon) ===== */
+@media (max-width: 720px) {
+  .block { grid-template-columns: 1fr; }
+  .fringes { inset: 0; opacity: 0.25; }
+  .skills div { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
+/* Voor mensen die minder beweging willen (instelling in hun systeem) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fringes { animation: none; }
+}
