@@ -45,8 +45,8 @@
       <div class="hero-text">
         <h1>Laurens van Osch</h1>
         <p class="hero-lead">
-          Applied physicist from TU Eindhoven. I find the connections in data
-          and make them clear for others.
+          Applied physicist from TU Eindhoven. I model complex problems and
+          turn the results into a clear story that others can base a decision on.
         </p>
         <!-- Drie korte feiten, zodat de bovenkant meteen iets laat zien -->
         <ul class="facts">
@@ -63,15 +63,18 @@
       <h2>About me</h2>
       <div class="block-body">
         <p>
-          I'm a recent Applied Physics graduate from TU Eindhoven, and I enjoy
-          complex, modern problems. I got to know the high-tech industry through
-          internships at ASML and SMART Photonics. What I loved most there wasn't
-          only the physics, but solving problems with simulation and data
-          analysis through collaboration.
+          I recently finished my MSc in Applied Physics at TU Eindhoven, with a
+          graduation project at ASML and an internship at SMART Photonics before
+          that. During my studies I found out that what drives me most is not one
+          specific physics topic, but the process itself: modelling a complex
+          system, checking how sensitive the outcome is to the assumptions, and
+          turning that into a clear story.
         </p>
         <p>
-          During those projects I noticed something: the minutes I spent coding
-          turned into hours without me feeling it.
+          I get the most energy from working through a problem with others. When
+          you brainstorm together, something suddenly clicks because you look at
+          it from a different angle. And when I code, the minutes easily turn
+          into hours.
         </p>
       </div>
     </section>
@@ -83,17 +86,27 @@
         <dl class="skills">
           <div>
             <dt>Physics</dt>
-            <dd>Photonics and applied physics, simulation of physical systems.</dd>
+            <dd>
+              Photonics and optics. Modelling and simulating physical systems,
+              and checking how much the results depend on the assumptions.
+            </dd>
           </div>
           <div>
             <dt>Programming</dt>
-            <dd>Python and MATLAB. Basic SQL.</dd>
+            <dd>
+              Python and MATLAB. My code is functional rather than polished, but
+              I pick up new tools quickly when a problem calls for it: Ansys
+              Zemax and Lumerical were completely new to me when I started at
+              ASML.
+            </dd>
           </div>
           <div>
-            <dt>Data</dt>
+            <dt>Explaining</dt>
             <dd>
-              What I do best: digging through data to find connections, and
-              making data understandable for others.
+              I enjoy explaining complex results as much as the work itself. At
+              ASML I updated my supervisors every week with plots, and my final
+              presentation, for an audience without a specialist background, got
+              an 8.8: the best-graded part of my graduation.
             </dd>
           </div>
         </dl>
@@ -103,7 +116,8 @@
           <li>pandas</li>
           <li>matplotlib</li>
           <li>MATLAB</li>
-          <li>SQL</li>
+          <li>Ansys Zemax</li>
+          <li>Ansys Lumerical</li>
           <li>Git</li>
           <li>Claude API</li>
         </ul>
@@ -119,17 +133,19 @@
             <h3>ASML</h3>
             <p class="meta">Graduation internship, 2025–2026</p>
             <p>
-              Proof of concept of a large-area hybrid lens that combines a
-              refractive lens with a metalens to reduce the aberrations of a
-              simple refractive lens.
+              I designed a proof of concept for a large-area hybrid lens: a
+              refractive lens combined with a metalens, to reduce the colour and
+              shape errors of a simple lens. I modelled it in Python, MATLAB and
+              Ansys, checked how different assumptions changed the performance,
+              and presented my results every week.
             </p>
           </li>
           <li>
             <h3>SMART Photonics</h3>
             <p class="meta">Internship, 2025</p>
             <p>
-              Modeled the coupling sensitivity of waveguides to determine the
-              influence of position uncertainties on coupling performance.
+              I built a simulation model of waveguide coupling to show how
+              sensitive the coupling is to small position errors.
             </p>
           </li>
         </ul>
@@ -166,17 +182,27 @@
       <div class="block-body">
         <h3>Competitive rowing</h3>
         <p>
-          For years, competitive rowing took up almost all of my free time. It
-          taught me to perform under pressure and to deal with setbacks.
-          Eventually I became the most experienced rower in the group, and I
-          made it my role to help teammates: sharing what I had learned, so they
-          could use it sooner and avoid the setbacks I ran into.
+          For seven years I rowed at competition level, with 8 to 12 training
+          sessions a week next to a full-time study. On some days we trained
+          twice and went to university in between, so I had to learn to plan.
+          After every session you get feedback on your technique and use it
+          straight away the next time, and in a boat you depend on each other
+          completely.
+        </p>
+        <p>
+          I also had a lot of injuries in those years, which taught me that
+          performance shouldn't be my only drive; enjoying what you do matters
+          too. Later I was the most experienced rower in the group and made it my
+          role to help teammates avoid the setbacks I ran into. I also coached
+          groups of high school students during rowing courses.
         </p>
         <h3>Financial markets</h3>
         <p>
-          I follow the financial markets, mostly through podcasts like
-          FD Dagkoers and the IEX Podcast. The rest of my free time goes to
-          friends.
+          I follow the financial markets and business news, mostly through
+          podcasts like FD Dagkoers and the IEX Podcast. For three years I was
+          treasurer of Bètaroeien and took care of the budget and the annual
+          accounts. The rest of my free time goes to friends, and lately to these
+          projects.
         </p>
       </div>
     </section>
@@ -191,8 +217,10 @@
           <h3>Market briefing agent</h3>
           <p>
             A daily market briefing in Python. It fetches prices for my watchlist,
-            flags unusual moves with a z-score, and asks a Claude agent with web
-            search to explain why those funds moved, with sources.
+            flags unusual moves with a z-score, and lets a Claude agent with web
+            search find out why those funds moved, with sources. Python does the
+            maths and the AI only explains. I still check its claims against the
+            sources, because you can't just take the output over.
           </p>
           <p class="project-links">
             <a class="button" href="https://lauvanosch-ctrl.github.io/Market_briefing/briefing.html">Live briefing</a>
@@ -202,8 +230,9 @@
         <article class="project">
           <h3>This website</h3>
           <p>
-            Built with an AI coding agent as my first step into agentic AI:
-            plain HTML and CSS, hosted on GitHub Pages.
+            Plain HTML and CSS on GitHub Pages, built together with an AI coding
+            agent as my first step into agentic AI. It made me a lot faster, but
+            I still check and understand every change.
           </p>
           <p class="project-links">
             <a class="button button-ghost" href="https://github.com/lauvanosch-ctrl/lauvanosch-ctrl.github.io">Code on GitHub</a>
@@ -215,7 +244,7 @@
     <section class="looking" id="contact">
       <h2>What I'm looking for</h2>
       <p class="looking-text">
-        A role that challenges my analytical and quantitative skills.
+        A role where I work on complex problems with data, in a team.
       </p>
       <ul class="contact">
         <li>Email: <a href="mailto:lau.vanosch@gmail.com">lau.vanosch@gmail.com</a></li>
